@@ -1,1 +1,1515 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation - JIIT Noida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Three.js for 3D effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+        <div class="shape shape-7"></div>
+        <div class="shape shape-8"></div>
+    </div>
+    
+    <!-- Typewriter Loading Screen -->
+    <div class="loader-wrapper" id="loader">
+        <div class="typewriter-container">
+            <h1 id="typewriter-text"></h1>
+            <div class="typewriter-glow"></div>
+        </div>
+        <div class="typewriter-subtitle">Innovation</div>
+    </div>
+    
+    <!-- Ride Hack 25 Popup Modal -->
+    <div class="ridehack-popup-modal" id="ridehackPopupModal">
+        <div class="ridehack-popup-content">
+            <button class="ridehack-popup-close" id="ridehackPopupClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="ridehack-popup-header">
+                <div class="ridehack-popup-icon">
+                    <img src="ChatGPT Image Aug 9, 2025 at 10_55_53 AM.png" alt="Innovation Logo" class="innovation-logo">
+                </div>
+                <h2 class="ridehack-popup-title">RIDE Hack'25</h2>
+                <p class="ridehack-popup-subtitle">Flagship Innovation Challenge</p>
+            </div>
+            <div class="ridehack-popup-body">
+                <div class="ridehack-popup-details">
+                    <div class="ridehack-popup-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>November 1, 2025</span>
+                    </div>
+                    <div class="ridehack-popup-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>JIIT Noida Campus</span>
+                    </div>
+                    <div class="ridehack-popup-prize">
+                        <i class="fas fa-trophy"></i>
+                        <span>Prize Pool: ₹2.5 Lakh</span>
+                    </div>
+                </div>
+                <p class="ridehack-popup-description">
+                    Join us for the most exciting innovation challenge of the year! RIDE Hack'25 brings together creative minds to solve real-world problems through technology and innovation.
+                </p>
+                <div class="ridehack-popup-highlights">
+                    <div class="highlight-item">
+                      
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ridehack-popup-footer">
+                <button class="ridehack-popup-register" id="ridehackPopupRegister">Register Now</button>
+                <button class="ridehack-popup-learn" id="ridehackPopupLearn">Learn More</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Registration Modal -->
+    <div class="registration-modal" id="registrationModal">
+        <div class="registration-content">
+            <button class="registration-close" id="registrationClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="registration-icon">
+                <img src="ChatGPT Image Aug 9, 2025 at 10_55_53 AM.png" alt="Innovation Logo" class="innovation-logo">
+            </div>
+            <h2 class="registration-title">Register for RIDE Hack'25</h2>
+            <p class="registration-subtitle">Fill in your details to register</p>
+            <form action="" id="registrationForm" ></form>
+            <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfJY1Wfc40z-OUXnPVql9Xq6BMWtc6p7vNOadM8ijiKH-wg2A/formResponse">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regFullName">Full Name</label>
+                        <input type="text" id="regFullName" name="entry.257861193" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email Address</label>
+                        <input type="email" id="regEmail" name="entry.1837530543" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regCollege">Organization</label>
+                        <input type="text" id="regCollege" name="entry.1173215052" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regContact">Contact Number</label>
+                        <input type="tel" id="regContact" name="entry.605546011" pattern="[0-9]{10}" maxlength="10" required>
+                        <small class="form-hint">Enter 10-digit mobile number</small>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary registration-submit-btn">Register Now</button>
+            </form>
+        </div>
+    </div>
+</div>
+    
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <button class="success-close" id="successClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="success-title">Successful!</h2>
+            <p class="success-message">Thank you for registering. We will get back to you soon!</p>
+            <button class="success-button" id="successButton">Got It</button>
+        </div>
+    </div>
+    
+    <!-- Registration Success Modal (No Timer) -->
+    <div class="registration-success-modal" id="registrationSuccessModal">
+        <div class="registration-success-content">
+            <button class="registration-success-close" id="registrationSuccessClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="registration-success-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h2 class="registration-success-title">Registration Successful!</h2>
+            <p class="registration-success-message">You are being redirected to Google Form...</p>
+        </div>
+    </div>
+    
+    <!-- Coming Soon Modal -->
+    <div class="coming-soon-modal" id="comingSoonModal">
+        <div class="coming-soon-content">
+            <button class="coming-soon-close" id="comingSoonClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="coming-soon-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h2 class="coming-soon-title">Coming Soon!</h2>
+            <p class="coming-soon-message">We're working hard to bring you an amazing experience. Stay tuned for updates!</p>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            <button class="coming-soon-button" id="comingSoonButton">Notify Me</button>
+        </div>
+    </div>
+    
+    <!-- Simple Coming Soon Modal -->
+    <div class="simple-coming-soon-modal" id="simpleComingSoonModal">
+        <div class="simple-coming-soon-content">
+            <button class="simple-coming-soon-close" id="simpleComingSoonClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="simple-coming-soon-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h2 class="simple-coming-soon-title">Coming Soon!</h2>
+            <p class="simple-coming-soon-message">We're working hard to bring you this event. Stay tuned for updates!</p>
+            <button class="simple-coming-soon-button" id="simpleComingSoonButton">Got It</button>
+        </div>
+    </div>
+    
+    <!-- Gallery Lightbox Modal -->
+    <div class="gallery-lightbox-modal" id="galleryLightboxModal">
+        <div class="gallery-lightbox-content">
+            <button class="gallery-lightbox-close" id="galleryLightboxClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="gallery-lightbox-image-container">
+                <img src="" alt="Gallery Image" id="galleryLightboxImage">
+            </div>
+            <div class="gallery-lightbox-nav">
+                <button class="gallery-lightbox-prev" id="galleryLightboxPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-lightbox-next" id="galleryLightboxNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Content Team Coming Soon Modal -->
+    <div class="simple-coming-soon-modal" id="contentTeamModal">
+        <div class="simple-coming-soon-content">
+            <button class="simple-coming-soon-close" id="contentTeamModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="simple-coming-soon-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h2 class="simple-coming-soon-title">Content Team</h2>
+            <p class="simple-coming-soon-message">Revealing soon team...</p>
+            <button class="simple-coming-soon-button" id="contentTeamModalButton">Got It</button>
+        </div>
+    </div>
+    
+    <!-- Brochure Coming Soon Modal -->
+    <div class="simple-coming-soon-modal" id="brochureComingSoonModal">
+        <div class="simple-coming-soon-content">
+            <button class="simple-coming-soon-close" id="brochureComingSoonClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="simple-coming-soon-icon">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <h2 class="simple-coming-soon-title">Coming Soon</h2>
+            <p class="simple-coming-soon-message">BROCHURE</p>
+            <button class="simple-coming-soon-button" id="brochureComingSoonButton">Got It</button>
+        </div>
+    </div>
+    
+    <!-- Enhanced Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" id="logoLink">
+                <div class="logo-container">
+                    <img src="ChatGPT Image Aug 9, 2025 at 10_55_53 AM.png" alt="Innovation Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span>Innovation</span>
+                    </div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="events">Events</a></li>
+                <li><a href="#" class="nav-link" data-page="gallery">Gallery</a></li>
+                <li><a href="#" class="nav-link" data-page="updates">Updates</a></li>
+                <li><a href="#" class="nav-link" data-page="team">Team</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                <li>
+                    <a href="#" class="nav-link ride-hack-nav" id="rideHackNavBtn" data-page="ridehack">
+                        <span class="ride-hack-text"><strong>RIDE HACK</strong></span>
+                        <span class="ride-hack-glow"></span>
+                    </a>
+                </li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-menu-links">
+                <li><a href="#" class="mobile-nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="mobile-nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="mobile-nav-link" data-page="events">Events</a></li>
+                <li><a href="#" class="mobile-nav-link" data-page="gallery">Gallery</a></li>
+                <li><a href="#" class="mobile-nav-link" data-page="updates">Updates</a></li>
+                <li><a href="#" class="mobile-nav-link" data-page="team">Team</a></li>
+                <li><a href="#" class="mobile-nav-link" data-page="contact">Contact</a></li>
+                <li><a href="#" class="mobile-nav-link" id="mobileRideHackNavBtn" data-page="ridehack"><strong>RIDE HACK</strong></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div id="mainContent">
+        <!-- Hero Section with 3D Interactive Video Background -->
+        <section id="home" class="hero">
+            <div class="hero-3d-container" id="hero3dContainer">
+                <div class="hero-video-container">
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <!-- Fallback for browsers that don't support video -->
+                        <div class="hero-fallback"></div>
+                    </video>
+                    <div class="carousel-overlay"></div>
+                </div>
+                <div class="hero-3d-scene" id="hero3dScene"></div>
+                <div class="hero-content">
+                    <div class="hero-title-container">
+                        <h1 class="hero-title">Beyond Imagination</h1>
+                        <div class="hero-subtitle">Into Innovation</div>
+                    </div>
+                    <p class="hero-location"><a href="https://www.jiit.ac.in" target="_blank">JIIT NOIDA</a></p>
+                </div>
+            </div>
+            
+            <!-- Enhanced Floating Elements -->
+            <div class="floating-elements">
+                <div class="floating-element element-1">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="floating-element element-2">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="floating-element element-3">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="floating-element element-4">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="floating-element element-5">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="floating-element element-6">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <div class="floating-element element-7">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div class="floating-element element-8">
+                    <i class="fas fa-dna"></i>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Enhanced About Section -->
+        <section id="about" class="about">
+            <div class="section-header">
+                <h2 class="section-title">We Build The Future</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>We are the RIDE Innovation at JIIT Noida—an innovation ecosystem offering start-up , maker spaces, and advanced prototyping and AI labs. We empower pre-startup and startup teams with infrastructure, mentorship, and expert guidance to turn ideas into impact.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Startup Incubation</h4>
+                                <p>From idea to execution</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Prototyping & Fabrication</h4>
+                                <p>Turning concepts into reality</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Technical & Business Mentorship</h4>
+                                <p>Expert guidance at every step</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Expert Team</h4>
+                                <p>Industry leaders and innovators</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-cube" id="aboutCube">
+                        <div class="cube-face">Innovation</div>
+                        <div class="cube-face">Technology</div>
+                        <div class="cube-face">Future</div>
+                        <div class="cube-face">Growth</div>
+                        <div class="cube-face">Success</div>
+                        <div class="cube-face">Vision</div>
+                    </div>
+                    <div class="about-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Enhanced What We Do Section -->
+        <section id="whatwedo" class="whatwedo">
+            <div class="section-header">
+                <div class="section-subtitle">Our Activities</div>
+                <h2 class="section-title">What We Do</h2>
+            </div>
+            
+            <!-- Description Paragraph -->
+            <div class="whatwedo-description">
+                <p>At the Innovation Hub, JIIT Noida, we nurture ideas and transform them into impactful solutions through mentorship, modern labs, and startup support. We host flagship events like RIDE-Hack, Startup Weekend, and the E-Summit, along with regular workshops, innovation challenges, and expert sessions. Our mission is to connect students with industry and academy, foster creativity, and build a strong culture of research, innovation, and entrepreneurship.</p>
+            </div>
+            
+            <!-- Single Photo Carousel (slowed down, continuous loop) -->
+            <div class="whatwedo-carousel-container">
+                <div class="whatwedo-carousel-track">
+                    <div class="whatwedo-carousel-slide">
+                        <img src="ridehack.jpeg" alt="RIDE Hack">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk1.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk2.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk3.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk39.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk4.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk5.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit1.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit2.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit3.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit4.JPG" alt="Startup Weekend">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit5.JPG" alt="E-Summit">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit6.JPG" alt="Tech Workshop">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit7.JPG" alt="Workshop">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit8.JPG" alt="Event">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit9.JPG" alt="Competition">
+                    </div>
+                    <!-- Duplicate slides for seamless loop -->
+                    <div class="whatwedo-carousel-slide">
+                        <img src="ridehack.jpeg" alt="RIDE Hack">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk1.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk2.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk3.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk39.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk4.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="kk5.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit1.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit2.JPG" alt="Hackathon">
+                    </div>
+                    <div class="whatwedo-carousel-slide">
+                        <img src="jiit3.JPG" alt="Hackathon">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Enhanced Events Section -->
+        <section id="events" class="events">
+            <div class="section-header">
+                <div class="section-subtitle">Join Us</div>
+                <h2 class="section-title">Upcoming Events</h2>
+            </div>
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-date">
+                            <span class="day">1</span>
+                            <span class="month">NOV</span>
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-title">RIDE Hack'25</h3>
+                            <div class="event-meta">
+                                <div class="event-meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>November 1, 2025</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>JIIT NOIDA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-description">
+                       Join us for our flagship RIDE Hack'25 where students, developers, designers, and entrepreneurs come together to build innovative solutions to real-world problems. The event will feature hands-on workshops, mentorship from industry experts, and exciting prizes for the winning teams.
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn btn-primary" id="registerBtn">Register Now</button>
+                        <a href="#" id="rideHackDetailBtn" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event Countdown Section -->
+            <div class="event-countdown-section">
+                <div class="countdown-title">
+                    <span class="countdown-highlight">RIDE Hack'25</span> STARTS IN
+                </div>
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="eventDays">00</span>
+                        <span class="countdown-label">DAYS</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="eventHours">00</span>
+                        <span class="countdown-label">HOURS</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="eventMinutes">00</span>
+                        <span class="countdown-label">MINUTES</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="eventSeconds">00</span>
+                        <span class="countdown-label">SECONDS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New Innovation Spotlight Section -->
+            <div class="innovation-spotlight">
+                <div class="innovation-spotlight-header">
+                    <h2 class="innovation-spotlight-title">Innovation Spotlight</h2>
+                    <p class="innovation-spotlight-subtitle">Celebrating breakthrough ideas and projects</p>
+                </div>
+                <div class="innovation-cards">
+                    <div class="innovation-card">
+                        <div class="innovation-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="innovation-card-title">AI-Powered Solutions</h3>
+                        <p class="innovation-card-description">Exploring the frontiers of artificial intelligence to solve complex problems.</p>
+                        <div class="innovation-card-footer">
+                            <span class="innovation-tag">Machine Learning</span>
+                            <span class="innovation-tag">Neural Networks</span>
+                        </div>
+                    </div>
+                    <div class="innovation-card">
+                        <div class="innovation-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="innovation-card-title">Sustainable Tech</h3>
+                        <p class="innovation-card-description">Developing eco-friendly technologies for a greener future.</p>
+                        <div class="innovation-card-footer">
+                            <span class="innovation-tag">Green Energy</span>
+                            <span class="innovation-tag">Circular Economy</span>
+                        </div>
+                    </div>
+                    <div class="innovation-card">
+                        <div class="innovation-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h3 class="innovation-card-title">Immersive Experiences</h3>
+                        <p class="innovation-card-description">Creating virtual and augmented reality solutions for education and industry.</p>
+                        <div class="innovation-card-footer">
+                            <span class="innovation-tag">VR/AR</span>
+                            <span class="innovation-tag">Metaverse</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!--  Footer -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="ChatGPT Image Aug 9, 2025 at 10_55_53 AM.png" alt="Innovation Logo">
+                        <h3>Innovation</h3>
+                    </div>
+                    <div class="footer-description">
+                        <p>Fostering innovation, entrepreneurship, and technological advancement at JIIT Noida.</p>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/jiitofficial/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/innovation.jiit/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/innovation-jiit-noida-167b43380/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="about">About Us</a></li>
+                        <li><a href="#" data-page="events">Events</a></li>
+                        <li><a href="#" data-page="gallery">Gallery</a></li>
+                        <li><a href="#" data-page="updates">Updates</a></li>
+                        <li><a href="#" data-page="team">Our Team</a></li>
+                        <li><a href="#" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Innovation hub<br>JIIT WISH TOWN CAMPUS NOIDA</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="phone-numbers">
+                                <p>Divyansh: +91 8107870800</p>
+                                <p>YASH: +91 7210000082</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-emails">
+                                <p>ride@mail.jiit.ac.in </p>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Innovation, JIIT Noida. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- About Page -->
+    <div id="aboutPage" class="about-page">
+        <div class="about-hero">
+            <div class="about-hero-content">
+                <h1 class="about-hero-title">About Innovation</h1>
+                <p class="about-hero-subtitle">Pioneering the future of technology and entrepreneurship</p>
+            </div>
+        </div>
+        
+        <div class="about-container">
+            <div class="about-intro">
+                <h2 class="about-intro-title">Who We Are</h2>
+                <p class="about-intro-text">
+                    The JIIT Innovation is a space where creativity meets technology. We empower students and innovators with labs, mentorship, and resources to turn ideas into real-world solutions, fostering a strong culture of research and entrepreneurship.
+                </p>
+            </div>
+            
+            <div class="about-activities">
+                <h2 class="activities-title">Our Flagship Activities</h2>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="ridehack.jpeg" alt="RIDE Hack">
+                    </div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">RIDE Hack</h3>
+                        <p class="activity-description">
+                            RIDE Hack is the flagship hackathon of the JIIT Innovation, designed to bring together creative minds to solve real-world problems through technology and innovation. It provides a platform for students to showcase their skills, build prototypes, and pitch ideas, while receiving mentorship from experts and exposure to industry.
+                        </p>
+                        <div class="activity-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-users"></i>
+                                <span>All Participants</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>₹25 Lakh in Prizes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity-card reverse">
+                    <div class="activity-image">
+                        <img src="WhatsApp Image 2025-08-08 at 19.20.12-2.jpeg" alt="Hackathon">
+                    </div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">Innovate</h3>
+                        <p class="activity-description">
+                            An exciting event by the JIIT Innovation where students team up to create innovative tech solutions for real-world problems, guided by mentors and industry experts.
+                        </p>
+                        <div class="activity-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <span></span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-award"></i>
+                                <span></span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-handshake"></i>
+                                <span> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="#" id="backToHomeFromAbout" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Events Page -->
+    <div id="eventsPage" class="events-page">
+        <div class="events-hero">
+            <div class="events-hero-content">
+                <h1 class="events-hero-title">Upcoming Events</h1>
+                <p class="events-hero-subtitle">Join us for exciting innovation experiences</p>
+            </div>
+        </div>
+        
+        <div class="events-container">
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-date">
+                        <span class="day">1</span>
+                        <span class="month">NOV</span>
+                    </div>
+                    <div class="event-info">
+                        <h3 class="event-title">RIDE Hack'25</h3>
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>November 1, 2025</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>JIIT NOIDA</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>Open to All</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-description">
+Join us for our flagship RIDE Hack'25 where students, developers, designers, and entrepreneurs come together to build innovative solutions to real-world problems. The event will feature hands-on workshops, mentorship from industry experts, and exciting prizes for the winning teams.
+                </div>
+                <div class="event-actions">
+                    <button class="btn btn-primary" id="eventsPageRegisterBtn">Register Now</button>
+                    <a href="#" id="eventsPageRideHackDetailBtn" class="btn btn-secondary">View Details</a>
+                </div>
+            </div>
+            
+            <!-- New Event: Innovate 3.0 -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-date">
+                        <span class="day">TBD</span>
+                        <span class="month">2025</span>
+                    </div>
+                    <div class="event-info">
+                        <h3 class="event-title">Innovate 3.0</h3>
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Coming Soon</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>JIIT NOIDA</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>Open to All</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-description">
+                    Innovate 3.0 is our upcoming flagship event focused on cutting-edge technology and innovation. This event will bring together students, faculty, and industry experts to collaborate on projects that push the boundaries of what's possible. Stay tuned for more details!
+                </div>
+                <div class="event-actions">
+                    <button class="btn btn-primary" id="innovateEventBtn">Coming Soon</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="#" id="backToHomeFromEvents" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Ride Hack Event Detail Page -->
+    <div id="rideHackPage" class="ride-hack-page">
+        <div class="ride-hack-hero">
+            <div class="ride-hack-hero-content">
+                <h1 class="ride-hack-hero-title">RIDE Hack'25</h1>
+                <p class="ride-hack-hero-subtitle">Innovation Challenge</p>
+                <div class="event-date-badge">
+                  
+                </div>
+            </div>
+        </div>
+        
+        <div class="ride-hack-container">
+            <div class="ride-hack-intro">
+                <h2 class="ride-hack-intro-title">About RIDE Hack'25</h2>
+                <p class="ride-hack-intro-text">
+                    RIDE Hack'25 is the flagship hackathon of the JIIT Innovation, designed to bring together creative minds to solve real-world problems through technology and innovation. The event will feature hands-on workshops, mentorship from industry experts, and exciting prizes for the winning teams.
+                </p>
+            </div>
+            
+            <div class="ride-hack-details">
+                
+                <!-- Why Participate Section -->
+                <div class="detail-section enhanced-section">
+                    <h3 class="detail-title">Why Participate?</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4 class="benefit-title">Innovate</h4>
+                            <p class="benefit-desc">Solve real-world problems with your creative solutions</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4 class="benefit-title">Network</h4>
+                            <p class="benefit-desc">Connect with industry leaders and like-minded innovators</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h4 class="benefit-title">Win</h4>
+                            <p class="benefit-desc">Compete for exciting prizes and recognition</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h4 class="benefit-title">Launch</h4>
+                            <p class="benefit-desc">Get opportunities to turn your ideas into startups</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prizes & Rewards Section -->
+                <div class="detail-section">
+                    <h3 class="detail-title">Prizes & Rewards</h3>
+                    <div class="prizes-container">
+                        <div class="prize-card first-prize">
+                            <div class="prize-position">1st Place</div>
+                            <div class="prize-amount">₹1 Lakh</div>
+                        </div>
+                        <div class="prize-card second-third-prize">
+                            <div class="prize-position">2&3rd Place</div>
+                            <div class="prize-amount">₹50 Thousand Each</div>
+                        </div>
+                        <div class="prize-card fourth-fifth-prize">
+                            <div class="prize-position">4&5th Place</div>
+                            <div class="prize-amount">₹25 Thousand Each</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Register Now Section -->
+                <div class="detail-section">
+                    <h3 class="detail-title">Register Now</h3>
+                    <div class="register-container">
+                        <p class="register-info">Registration is open to all students and professionals. Teams can consist of 2-4 members.</p>
+                        <div class="register-actions">
+                            <button class="btn btn-primary" id="rideHackRegisterBtn">Register for RIDE Hack'25</button>
+                            <a href="#" class="btn btn-secondary" id="downloadBrochureBtn">Download Brochure</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="#" id="backToHomeFromRideHack" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Events</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Contact Page -->
+    <div id="contactPage" class="contact-page">
+        <div class="contact-hero">
+            <div class="contact-hero-content">
+                <h1 class="contact-hero-title">Get In Touch</h1>
+                <p class="contact-hero-subtitle">We'd love to hear from you</p>
+            </div>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info-section">
+                <div class="contact-info-card">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="contact-info-title">Visit Us</h3>
+                    <p class="contact-info-text">A-10, Sector-62, Noida – 201309, Uttar Pradesh, India</p>
+                </div>
+                
+                <div class="contact-info-card">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="contact-info-title">Call Us</h3>
+                    <div class="phone-numbers">
+                        <p>Divyansh: +918107870800</p>
+                        <p>YASH: +91 7210000082</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-card">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="contact-info-title">Email Us</h3>
+                    <div class="contact-emails">
+                        <p>ride@mail.jiit.ac.in </p>
+                        <p></p>
+                    </div>
+                </div>
+                
+             <!-- Google Map for Laptop View -->
+                <div class="contact-map">
+                    <h3 class="contact-info-title">Our Location</h3>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.498412435515!2d77.3716!3d28.6199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceff5a4e3e4d5%3A0x9a3b5d4c3e2f1a0!2sJaypee%20Institute%20of%20Information%20Technology!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="250" 
+                            style="border:0; border-radius: 15px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-section">
+                <h2 class="contact-form-title">Send Us a Message</h2>
+                <form id="contactForm"></form>
+                <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScf8Sx7t81lDiOHmkNIjBxALA30a-u078lnbCa_Aq1tSaeAxA/formResponse">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="entry.1872101691" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="entry.1491932109" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="entry.1072851862" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Contact no</label>
+                        <input type="text" id="subject" name="entry.1615926104" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="entry.1062632425" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary contact-submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="#" id="backToHome" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Team Page -->
+    <div id="teamPage" class="team-page">
+        <div class="team-hero">
+            <div class="team-hero-content">
+                <h1 class="team-hero-title">Meet Our Team</h1>
+                <p class="team-hero-subtitle">The minds behind the innovation</p>
+            </div>
+        </div>
+        
+        <div class="team-container">
+            <!-- Faculty Coordinator Section -->
+            <div class="team-section">
+                <h2 class="team-section-title">Faculty Coordinators</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="WhatsApp Image 2025-08-23 at 12.27.50.jpeg" alt="Faculty Coordinator">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Mukesh Saraswat</h3>
+                                <p class="member-role">Faculty Coordinator</p>
+                                <p class="member-bio">Leading the Innovation with 24+ years of experience in technology and entrepreneurship education.</p>
+                                <div class="member-social">
+                                    <a href="mailto:mukesh.saraswat@mail.jiit.ac.in"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="DSC_0360-1-2.jpg" alt="Faculty Coordinator">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Akanksha Mehendiratta</h3>
+                                <p class="member-role">Faculty Coordinator</p>
+                                <p class="member-bio">Bringing expertise in innovation management and student mentorship to foster entrepreneurial growth.</p>
+                                <div class="member-social">
+                                    <a href="mailto:akanksha.mehndiratta@mail.jilt.ac.in"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Leadership Team Section -->
+            <div class="team-section">
+                <h2 class="team-section-title">Leadership Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="WhatsApp_Image_2025-08-20_at_21.50.42-removebg-preview.png" alt="Team Member">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">𝐃𝐈𝐕𝐘𝐀𝐍𝐒𝐇 𝐃𝐔𝐒𝐄𝐉𝐀</h3>
+                                <p class="member-role">Head of the Innovation Club</p>
+                                <p class="member-bio">Leading with creativity, collaboration, and a drive to turn bold ideas into real impact.</p>
+                                <div class="member-social">
+                                    <a href="https://www.instagram.com/_divyansshh._/"><i class="fab fa-instagram"></i></a>
+                                                   <a href="mailto:9923102025@mail.jiit.ac.in"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="Screenshot_2025-08-09_at_9.52.30_AM-removebg-preview.png" alt="Team Member">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">𝐘𝐀𝐒𝐇 𝐀𝐆𝐆𝐀𝐑𝐖𝐀𝐋</h3>
+                                <p class="member-role">Coordinator of the Innovation Club</p>
+                                <p class="member-bio">The bridge between ideas and execution, driving teamwork, precision, and creative impact."</p>
+                                <div class="member-social">
+                                    <a href="https://www.instagram.com/_.yash.aggarwal._/"><i class="fab fa-instagram"></i></a>
+                                                   <a href="mailto:9922102055@mail.jiit.ac.in"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Department Teams Section -->
+            <div class="team-section">
+                <h2 class="team-section-title">Department Teams</h2>
+                <div class="department-teams">
+                    <div class="department-team-card" id="webDevTeamCard">
+                        <div class="department-team-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="department-team-title">Web Development Team</h3>
+                        <p class="department-team-description">Creating digital experiences that power our innovation ecosystem</p>
+                        <button class="department-team-btn" id="webDevTeamBtn">View Team</button>
+                    </div>
+                    
+                    <div class="department-team-card" id="contentTeamCard">
+                        <div class="department-team-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h3 class="department-team-title">Content Team</h3>
+                        <p class="department-team-description">Crafting compelling narratives that communicate our vision</p>
+                        <button class="department-team-btn" id="contentTeamBtn">View Team</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="#" id="backToHomeFromTeam" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Web Development Team Page -->
+    <div id="webDevTeamPage" class="team-page">
+        <div class="team-hero">
+            <div class="team-hero-content">
+                <h1 class="team-hero-title">Web Development Team</h1>
+                <p class="team-hero-subtitle">Building digital solutions for innovation</p>
+            </div>
+        </div>
+        
+        <div class="team-container">
+            <div class="team-intro">
+                <h2 class="team-intro-title">Our Web Development Team</h2>
+                <p class="team-intro-text">
+                    Our Web Development Team is responsible for creating and maintaining all digital platforms for the Innovation Club. 
+                    From our official website to event registration systems, they ensure our digital presence is cutting-edge, 
+                    user-friendly, and secure. With expertise in modern web technologies, they bring our innovation vision to life online.
+                </p>
+            </div>
+            
+            <div class="team-section">
+                <h2 class="team-section-title">Team Members</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="kartikpic.jpg" alt="Web Developer">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">KARTIK GULERIA</h3>
+                                <p class="member-role">Lead Web Developer</p>
+                                <p class="member-bio">Full-stack developer with React & cloud expertise, building scalable products and startup-ready solutions.</p>
+                                <div class="member-social">
+                                    <a href="https://www.instagram.com/kartik._.097/"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/kartik-guleria-b61602306/"><i class="fab fa-linkedin"></i></a>
+                                    <a href="mailto:kartikguleria12@gmail.com"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="WhatsApp Image 2025-08-26 at 18.51.00.jpeg" alt="Web Developer">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Om Tripathi</h3>
+                                <p class="member-role">Frontend Developer</p>
+                                <p class="member-bio">Frontend developer with a keen eye for design, turning complex requirements into intuitive and engaging interfaces.</p>
+                                <div class="member-social">
+                                    <a href="https://www.instagram.com/_om_tripathi_007/"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/om-tripathi-155b24380/"><i class="fab fa-linkedin"></i></a>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="WhatsApp Image 2025-08-26 at 18.54.28.jpeg" alt="Web Developer">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Shivay Agarwal</h3>
+                                <p class="member-role">Backend Developer</p>
+                                <p class="member-bio">Database and server-side architecture expert. Ensures our applications are scalable, secure, and performant.</p>
+                                <div class="member-social">
+                                   
+                                   <a href="https://www.instagram.com/shivayagarwal_08/"><i class="fab fa-instagram"></i></a>
+                             
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-projects">
+                <h2 class="team-section-title">Our Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="project-title">Innovation Club Website</h3>
+                        <p class="project-description">Official website showcasing our events, team, and innovation initiatives.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="project-title">Event Registration System</h3>
+                        <p class="project-description">Seamless registration platform for all our events and workshops.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="project-title">Hackathon Portal</h3>
+                        <p class="project-description">Comprehensive platform for managing our flagship hackathon events.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="#" id="backToTeamFromWebDev" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Team</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Content Team Page -->
+    <div id="contentTeamPage" class="team-page">
+        <div class="team-hero">
+            <div class="team-hero-content">
+                <h1 class="team-hero-title">Content Team</h1>
+                <p class="team-hero-subtitle">Crafting stories that inspire innovation</p>
+            </div>
+        </div>
+        
+        <div class="team-container">
+            <div class="team-intro">
+                <h2 class="team-intro-title">Our Content Team</h2>
+                <p class="team-intro-text">
+                    The Content Team is the voice of the Innovation Club. They create compelling narratives that communicate 
+                    our vision, showcase our achievements, and engage our community. From social media content to event 
+                    documentation, they ensure our message reaches and resonates with our audience.
+                </p>
+            </div>
+            
+            <div class="team-section">
+                <h2 class="team-section-title">Team Members</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="https://via.placeholder.com/180" alt="Content Creator">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Neha Patel</h3>
+                                <p class="member-role">Content Lead</p>
+                                <p class="member-bio">Strategic storyteller with a background in marketing communications. Crafts narratives that inspire and engage.</p>
+                                <div class="member-social">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    <a href="mailto:neha@example.com"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="https://via.placeholder.com/180" alt="Content Creator">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Karan Singh</h3>
+                                <p class="member-role">Social Media Manager</p>
+                                <p class="member-bio">Digital native with expertise in creating viral content. Manages our online presence across platforms.</p>
+                                <div class="member-social">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="mailto:karan@example.com"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="https://via.placeholder.com/180" alt="Content Creator">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Sneha Reddy</h3>
+                                <p class="member-role">Visual Content Creator</p>
+                                <p class="member-bio">Creative designer specializing in visual storytelling. Creates graphics and videos that capture our innovation journey.</p>
+                                <div class="member-social">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-behance"></i></a>
+                                    <a href="mailto:sneha@example.com"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-projects">
+                <h2 class="team-section-title">Our Work</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3 class="project-title">Blog & Articles</h3>
+                        <p class="project-description">Thought leadership content on innovation, technology, and entrepreneurship.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="project-title">Event Documentation</h3>
+                        <p class="project-description">Comprehensive coverage of our events through photos, videos, and recaps.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                        <h3 class="project-title">Social Media Campaigns</h3>
+                        <p class="project-description">Engaging campaigns that build our community and amplify our message.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="#" id="backToTeamFromContent" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Team</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Gallery Page -->
+    <div id="galleryPage" class="gallery-page">
+        <!-- Hero Section -->
+        <div class="gallery-hero" style="background: url('1.jpg') center/cover no-repeat;">
+            <div class="gallery-hero-content">
+                <h1 class="gallery-hero-title">Innovation Gallery</h1>
+                <p class="gallery-hero-subtitle">Explore our events and achievements</p>
+            </div>
+        </div>
+        <!-- Gallery Container -->
+        <div class="gallery-container">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="kk1.JPG" alt="Gallery Image 1">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="kk2.JPG" alt="Gallery Image 2">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="kk3.JPG" alt="Gallery Image 3">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="kk39.JPG" alt="Gallery Image 4">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="kk4.JPG" alt="Gallery Image 5">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="kk5.JPG" alt="Gallery Image 6">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="WhatsApp Image 2025-08-08 at 19.20.11.jpeg" alt="Gallery Image 7">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="WhatsApp Image 2025-08-08 at 19.20.12-2.jpeg" alt="Gallery Image 8">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="WhatsApp Image 2025-08-08 at 19.20.09.jpeg" alt="Gallery Image 9">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="WhatsApp Image 2025-08-08 at 18.57.09.jpeg" alt="Gallery Image 10">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="WhatsApp Image 2025-08-08 at 19.20.12-3.jpeg" alt="Gallery Image 11">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="WhatsApp Image 2025-08-08 at 19.20.12.jpeg" alt="Gallery Image 12">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Back Button -->
+        <div class="back-button-container">
+            <a href="#" id="backToHomeFromGallery" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Updates Page -->
+    <div id="updatesPage" class="updates-page">
+        <div class="updates-hero">
+            <div class="updates-hero-content">
+                <h1 class="updates-hero-title">Latest Updates</h1>
+                <p class="updates-hero-subtitle">Stay informed about our innovations</p>
+            </div>
+        </div>
+        
+        <div class="updates-container">
+            <div class="updates-list">
+                <div class="update-card" id="rideHackUpdateCard">
+                    <div class="update-date">
+                        <span class="update-day">1</span>
+                        <span class="update-month">NOV</span>
+                    </div>
+                    <div class="update-content">
+                        <h3 class="update-title">RIDE Hack'25 Event</h3>
+                        <p class="update-description">
+Join us for our flagship RIDE Hack'25 where students, developers, designers, and entrepreneurs come together to build innovative solutions to real-world problems. The event will feature hands-on workshops, mentorship from industry experts, and exciting prizes for the winning teams.
+                        </p>
+                        <button class="update-read-more-btn" id="rideHackUpdateBtn">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="#" id="backToHomeFromUpdates" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

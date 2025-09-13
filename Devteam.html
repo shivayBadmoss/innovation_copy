@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Team - Innovation Club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #00d4ff; /* Updated blue to match navigation bar */
+            --dark: #0a0e27;
+            --light: #ffffff;
+            --text-color: #333;
+            --gradient: linear-gradient(135deg, #0056b3, #0099ff);
+            --gradient-2: linear-gradient(135deg, #00d4ff, #0099ff);
+            --nav-blue: #00d4ff; /* Navigation bar blue */
+            --nav-red: #ff3b30; /* Navigation bar red */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a237e 100%); /* Changed to match page background */
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .kona {
+            font-family: 'Kona', sans-serif;
+            background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent ;
+            text-shadow: #FC466B 0px 0px 20px;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            background: rgba(10, 14, 39, 0.98);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 86, 179, 0.3);
+            border-radius: 0 0 20px 20px; /* Added rounded bottom corners */
+            box-shadow: 0 5px 20px rgba(0, 86, 179, 0.2); /* Added shadow for depth */
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        .logo-img i {
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo span {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--nav-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.blue {
+            color: var(--nav-blue);
+        }
+
+        .ride-hack-btn {
+            background: var(--nav-red);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 59, 48, 0.3);
+        }
+
+        .ride-hack-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 59, 48, 0.5);
+        }
+
+        .team-page {
+            position: relative;
+            min-height: 100vh;
+            color: var(--light);
+            padding-top: 70px; /* Space for fixed nav */
+        }
+
+        .team-page::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.8), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 50px 160px, rgba(255, 255, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 130px 40px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(2px 2px at 80px 10px, rgba(255, 255, 255, 0.8), transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .team-hero {
+            height: 40vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(10, 14, 39, 0.7), rgba(10, 14, 39, 0.9)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .team-hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .team-hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #e0e0e0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .team-intro-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-intro-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-2);
+            border-radius: 2px;
+        }
+
+        .team-intro-text {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 30px auto 0;
+            color: #ffffff;
+            line-height: 1.8;
+        }
+
+        .team-section {
+            margin-bottom: 60px;
+        }
+
+        .team-section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            line-height: 1.2;
+            position: relative;
+            display: inlie-block;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-2);
+            border-radius: 2px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .member-avatar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .member-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--nav-blue); /* Updated to nav blue */
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            flex-shrink: 0;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .member-role {
+            font-size: 1rem;
+            color: var(--nav-blue); /* Updated to nav blue */
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .member-bio {
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .member-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .member-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .member-social a:hover {
+            background: var(--gradient-2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .additional-members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .additional-member {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .additional-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .additional-member-avatar {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--nav-blue); /* Updated to nav blue */
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .additional-member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .additional-member-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--nav-blue); /* Updated to nav blue */
+            margin: 0;
+        }
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .sexy-back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .sexy-back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 86, 179, 0.6);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 15px;
+                border-radius: 0 0 15px 15px; /* Adjusted for mobile */
+            }
+            
+            .nav-links {
+                display: none; /* Hide nav links on mobile */
+            }
+            
+            .logo span {
+                display: none; /* Hide logo text on mobile */
+            }
+            
+            .ride-hack-btn {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+            
+            .team-page {
+                padding-top: 60px; /* Adjust for smaller nav */
+            }
+            
+            .team-hero {
+                height: 35vh;
+                min-height: 300px;
+            }
+
+            .team-hero-title {
+                font-size: 2.5rem;
+            }
+
+            .team-hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .team-container {
+                padding: 40px 15px;
+            }
+
+            .team-intro-title {
+                font-size: 2rem;
+            }
+
+            .team-section-title {
+                font-size: 1.8rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .member-avatar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .member-photo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .member-name {
+                font-size: 1.3rem;
+            }
+
+            .member-role {
+                font-size: 0.9rem;
+            }
+
+            .member-bio {
+                font-size: 0.9rem;
+            }
+
+            .additional-members-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 15px;
+            }
+
+            .additional-member {
+                padding: 20px 15px;
+            }
+
+            .additional-member-avatar {
+                width: 70px;
+                height: 70px;
+            }
+
+            .additional-member-name {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <span class="kona" ><h2>Innovation</h2></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">EVENTS</a></li>
+                <li><a href="#" class="blue">GALLERY</a></li>
+                <li><a href="#">UPDATES</a></li>
+                <li><a href="#">TEAM</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+            <a href="#" class="ride-hack-btn">RIDE HACK</a>
+        </div>
+    </nav>
+
+    <div id="webDevTeamPage" class="team-page">
+        <div class="team-hero">
+            <div class="team-hero-content">
+                <h1 class="team-hero-title">Web Development Team</h1>
+                <p class="team-hero-subtitle">Building digital solutions for innovation</p>
+            </div>
+        </div>
+        
+        <div class="team-container">
+            <div class="team-intro">
+                <h2 class="team-intro-title"> Web Development Team</h2>
+                <p class="team-intro-text">
+                    Our Web Development Team is responsible for creating and maintaining all digital platforms for the Innovation Club. 
+                    From our official website to event registration systems, they ensure our digital presence is cutting-edge, 
+                    user-friendly, and secure. With expertise in modern web technologies, they bring our innovation vision to life online.
+                </p>
+            </div>
+            
+            <!-- Leadership Section -->
+            <div class="team-section">
+                <h2 class="team-section-title">LEADERSHIP</h2><br><br>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="Screenshot_2025-08-09_at_9.52.30_AM-removebg-preview.png" alt="Team Lead">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name"><b>RAUNAK KHESHWARI</b></h3>
+                                <p class="member-role">Head of Web Development</p>
+                                <p class="member-bio">Leading with technical expertise, innovation, and a passion for creating impactful digital solutions.</p>
+                                <div class="member-social">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="Screenshot_2025-08-09_at_9.52.30_AM-removebg-preview.png" alt="Team Coordinator">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name"><b>DEVANSHI SRIVASTAVA</b></h3>
+                                <p class="member-role">Web Development Coordinator</p>
+                                <p class="member-bio">Ensuring seamless project execution, team collaboration, and timely delivery of all web initiatives.</p>
+                                <div class="member-social">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Leads Section -->
+            <div class="team-section">
+                <h2 class="team-section-title">CORE TEAM</h2><br><br>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="kartikpic.jpg" alt="Lead Developer">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">KARTIK GULERIA</h3>
+                                <p class="member-role">Lead Web Developer</p>
+                                <p class="member-bio">Full-stack developer with React & cloud expertise, building scalable products and startup-ready solutions.</p>
+                                <div class="member-social">
+                                    <a href="https://www.linkedin.com/in/kartik-guleria-b61602306/"><i class="fab fa-linkedin"></i></a>
+                                    <a href=""><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="WhatsApp Image 2025-08-26 at 18.51.00.jpeg" alt="Frontend Lead">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">OM TRIPATHI</h3>
+                                <p class="member-role">Frontend Lead</p>
+                                <p class="member-bio">Frontend developer with a keen eye for design, turning complex requirements into intuitive interfaces.</p>
+                                <div class="member-social">
+                                    <a href="https://www.linkedin.com/in/om-tripathi-155b24380/"><i class="fab fa-linkedin"></i></a>
+                                    <a href=""><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="WhatsApp Image 2025-08-26 at 18.54.28.jpeg" alt="Backend Lead">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">SHIVAY AGARWAL</h3>
+                                <p class="member-role">Backend Lead</p>
+                                <p class="member-bio">Database and server-side architecture expert ensuring applications are scalable, secure, and performant.</p>
+                                <div class="member-social">
+                                    <a href="https://www.linkedin.com/in/om-tripathi-155b24380/"><i class="fab fa-linkedin"></i></a>
+                                    <a href=""><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Members Section -->
+            <div class="team-section">
+                
+                <div class="additional-members-grid">
+                    <div class="additional-member">
+                        <div class="additional-member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="https://via.placeholder.com/150" alt="Team Member">
+                            </div>
+                        </div>
+                        <h3 class="additional-member-name">LAKSHAY AGARWAL</h3>
+                    </div>
+                    <div class="additional-member">
+                        <div class="additional-member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="https://via.placeholder.com/150" alt="Team Member">
+                            </div>
+                        </div>
+                        <h3 class="additional-member-name">ADITYA GUPTA</h3>
+                    </div>
+                    <div class="additional-member">
+                        <div class="additional-member-avatar">
+                            <div class="member-photo circular-photo">
+                                <img src="https://via.placeholder.com/150" alt="Team Member">
+                            </div>
+                        </div>
+                        <h3 class="additional-member-name">NALINI TIWARI</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-button-container">
+            <a href="#" id="backToHomeFromTeam" class="sexy-back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Simple back button functionality
+        document.getElementById('backToHomeFromTeam').addEventListener('click', function(e) {
+            e.preventDefault();
+            // In a real application, this would navigate back to the home page
+            alert('Navigating back to home page...');
+        });
+    </script>
+</body>
+</html>
